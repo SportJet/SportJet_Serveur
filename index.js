@@ -23,28 +23,36 @@ var mysql = require('mysql');
 
 var port = process.env.PORT || 3000;
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "nodejs",
-  password: "azerty123"
-});
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  con.query("CREATE DATABASE mydb", function (err, result) {
-    if (err) throw err;
-    console.log("Database created");
-  });
-});
-
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function(socket){
+  //log connection
   console.log('a user connected');
   socket.on('disconnect', function(){
     console.log('user disconnected');
+  });
+  //evenements button
+  socket.on('btn1+', function(){
+    console.log('Equipe 1 + un point!');
+  });
+  socket.on('btn1-', function(){
+    console.log('Equipe 1 - un point!');
+  });
+
+  socket.on('btn2+', function(){
+    console.log('Equipe 2 + un point!');
+  });
+  socket.on('btn2-', function(){
+    console.log('Equipe 2 - un point!');
+  });
+
+  socket.on('chronoon', function(){
+    console.log('Activation du Chrono');
+  });
+  socket.on('chronooff', function(){
+    console.log('Arret du chrono');
   });
 });
 

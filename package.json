@@ -4,13 +4,23 @@
   "description": "serveur nodejs communique via socket.io avec app Android.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."
+    "start": "node index.js",
+    "test": "mocha --reporter tap"
   },
   "author": "sportjet team",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SportJet/SportJet_Serveur"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
   "dependencies": {
     "express": "^4.17.1",
+    "jquery": "^3.4.1",
     "mysql": "^2.17.1",
     "socket.io": "^2.3.0"
   }
